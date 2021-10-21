@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="static/images/logo-wings.png" width="100px" height="100px" >
+    <!-- Boxicon -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{url_for('static', filename='scss/main.css')}}">
+    <title>LH44</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('index') }}"><img src="{{url_for('static', filename='/images/logo-wings.png')}}" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <i class='bx bx-menu-alt-right'></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('stats') }}">Stats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('schedule') }}">Schedule</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+      <div class="about-hero">
+        <h1>{{world_titles['total']}}x WDC</h1>
+        <img src="{{url_for('static', filename='/images/44.png')}}" alt="">
+      </div>
+      <div class="info-bar">
+        <div class="black-bio">
+          <div class="info-block">
+            <p class="label">Points:</p>
+            <h4>{{points}}</h4>
+          </div>
+          <div class="info-block">
+            <p class="label">Nationality:</p>
+            <h4>
+              {% for driver in hamilton %}
+                  {{ driver['nationality'] }}
+              {% endfor %}
+            </h4>
+          </div>
+        </div>
+        <div class="grey-bio">
+          <div class="info-block">
+            <p class="label">Height:</p>
+            <h4>1,74m</h4>
+          </div>
+          <div class="info-block">
+            <p class="label">Weight:</p>
+            <h4>73kg</h4>
+          </div>
+          <div class="info-block">
+            <p class="label">Career:</p>
+            <h4>{{active_years}} years</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <section id="bio">
+          <h4>Biography</h4>
+          <p>{{bio}}</p>
+        </section>
+        <section id="videos">
+          {% for video in yt_videos %}
+            {{ video|safe }}
+          {% endfor %}
+      </section>
+      </div>
+        <section id="merc_bio">
+          <div id="lh-bg">Lewis Hamilton</div>
+          <h6>Current Team</h6>
+          <h4>Mercedes F1</h4>
+          <p>{{merc}}</p>
+        </section>
+      
+        <footer>
+          <div>&copy; 2021 Copyright | <a href="https://lewishamilton.com/">lewishamilton.com</a></div>
+          <div class="socials">
+              <a href="https://www.facebook.com/LewisHamilton"><i class='bx bxl-facebook'></i></a>
+              <a href="https://twitter.com/LewisHamilton"><i class='bx bxl-twitter'></i></a>
+              <a href="https://www.instagram.com/lewishamilton/"><i class='bx bxl-instagram-alt'></i></a>
+          </div>
+        </footer> 
+  <script src="{{url_for('static', filename='scripts/main-script.js')}}"></script>       
+</body>
+</html>

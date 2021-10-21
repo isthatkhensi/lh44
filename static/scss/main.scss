@@ -1,0 +1,1346 @@
+@import "./variables";
+
+
+html{
+    overflow-x: hidden;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    // to true get rid of were white space when using position
+    // and get rid of scroll
+    position:relative;
+    overflow-x: hidden;
+
+    font-size: 100%;
+    font-family: $mainFont;
+    font-weight: weight('regular');
+    color: $kindaBlack;
+    background-color: $lightGrey;
+    a{
+        color: $kindaBlack;
+    }
+}
+/**** Home Page ****/
+// Navigation Bar
+.navbar{
+ 
+    width: 100%;
+    height: 100px;
+    
+    .container-fluid{
+        padding: 0px 80px;
+    }
+
+    .navbar-collapse{
+        justify-content: flex-end;
+    }
+
+    .navbar-brand img{
+       height: 50px;
+       padding-right: 0px;
+    }
+
+    .navbar-nav{
+
+        .nav-item{
+            padding-right: 45px;
+            
+            &:nth-child(5){
+                padding-right: 0px;
+            }
+        }
+
+        a{
+            color: $kindaBlack;
+            text-transform: uppercase;
+            font-weight: 500;
+
+            &:hover{
+                color: $primaryColor;
+            }
+        }
+    }
+}
+/* Changing the color of the navbar background on scroll */
+.scrolled{
+    // background-image: linear-gradient(40deg, #4C388B, #E1DFE7);
+    background-color: $primaryColor;
+    box-shadow: 1px 1px 10px $darkGrey;
+    .navbar-nav a{
+        color: white;
+
+        &:hover{
+            color: $darkGrey;
+        }
+    }
+}
+
+// Full hero section
+
+#hero{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(circle at bottom, $primaryColor 0%, $lightGrey 70%);
+
+    .bg-img{
+        height: 90%;
+        position: absolute;
+        bottom: 0;
+        
+    }
+
+    .l-title, .h-title{
+        position: absolute;
+        font-family: $raceFont;
+        font-size: 150px;
+        color: $kindaBlack;
+    }
+
+    .l-title{
+        margin-top: 100px;
+        margin-left: -640px;
+        
+    }
+    .h-title{
+        bottom: 20px;
+        right: 100px;
+        color: white;  
+    }
+}
+
+// Home Stats
+.home-stats{
+    position: absolute ;
+    left: 80px;
+    bottom: 120px;
+    text-align: center;
+
+    h4{
+        font-weight: weight("bold");
+        font-size: 45px;
+        padding: 0;
+        margin: 0;
+    }
+    p{
+        font-size: 15px;
+        padding-bottom: 45px;
+        margin: 0;
+
+    }
+}
+
+.home-stats p:nth-child(6) {
+    padding-bottom: 0px;
+  }
+
+// Race Stats
+
+.race-stats{
+    position: absolute;
+    width: 500px;
+    margin-top: 200px;
+    right: 80px;
+
+    .nav-tabs{
+        border-bottom: none;
+
+        .nav-item{
+            font-size: 12px;
+            border-radius: .25rem .25rem 0px 0px;
+            background:rgba(213, 206, 235, 0.6);
+            backdrop-filter: blur( 2.5px );
+            
+        }
+
+        .nav-item .nav-link{
+            font-weight: 500;
+            color: $primaryColor;
+            border: none;
+            text-transform: uppercase;
+        }
+    }
+
+    .tab-content{
+        height: 200px;
+        padding: 20px;
+        border-radius: 0px 8px 8px 8px;
+        background: rgba(255, 255, 255, 0.63);
+        backdrop-filter: blur( 6.5px );
+        
+        
+        .race-results__container{
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+    }
+
+    
+
+    // Race Info
+    .title{
+        height: 25px;
+        display: flex;
+        color: $primaryColor;
+        i{
+            font-size: 25px;
+        }
+        .c-flag{
+            height: 60%;
+            padding: 0px 10px;
+            img{ 
+                height: 100%;
+                border-radius: 2px;
+            }
+        }
+        
+    }
+
+    .meta-data{
+        padding: 5px 0px 10px 0px;
+        p{
+            margin: 0;
+        }
+        .date{
+            font-size: 11px;
+            color: $darkGrey;
+        }
+
+        .circuit-name{
+            font-size: 14px;
+            color: $primaryColor;
+        }
+        
+    }
+    
+
+    .race-results {
+        font-size: 13px;
+        padding-left: 15px;
+        
+        li{
+            font-family: $raceFont;
+            color: $primaryColor;
+            .result{
+                font-family: $mainFont;
+                font-weight: weight('medium');
+                text-transform: uppercase;
+                color: $textBlack;
+            }
+            &:first-child {
+                padding-bottom: 15px;
+            }
+            margin: 0;
+            padding-left: 30px;
+            list-style: none;
+            background-image: url('../images/checkered-flag.png');
+            background-repeat: no-repeat;
+            background-position: left top;
+            background-size: 25px;
+        }
+
+    }
+
+    
+
+    .circuit-right{
+        position: relative;
+        right: 0;
+        width: 180px;
+        height: 180px;
+        padding: 10px 10px 0px 10px;
+
+        img{
+            display:inline-block;
+            height: 100%;
+            vertical-align: middle;
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+      
+}
+
+
+// Counter Design
+#timer {  
+    width: 250px;
+    font-size: 35px;
+    font-weight: weight("bold");
+    color: $primaryColor;
+    display: flex;
+    justify-content: space-between;
+    div {
+      max-width: 80px;
+      
+      span {
+        color: $textBlack;
+        display: block;
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: capitalize;
+      }
+    }
+  }
+  
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+    background: rgba( 255, 255, 255, 0.80 );
+    backdrop-filter: blur( 2.5px );
+}
+
+
+/**** Stats Page ****/
+#stats-hero{
+    display: flex;
+    .img-bg {
+        height: 100vh;
+        width: 50%;
+        background: url('/static/images/lh-earpiece.jpeg');
+        background-position: 65% 0%;
+        background-repeat: no-repeat;
+        background-size: cover;  
+
+        img{
+            position: absolute;
+            z-index: 99;
+            left: 40px;
+            bottom: 0px;
+            width: 250px;
+        }
+    }
+
+    .circuit-bg{
+        position: absolute;
+        width: 1000px;
+        height: 1000px;
+        margin-top: 680px;
+        right: -200px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        z-index: -1;
+        background: url('/static/images/circuit-maps/silverstone.svg');
+        background-repeat: no-repeat;
+        opacity: 0.3;
+    }
+    
+    .stats-container {
+        width: 50%;
+        padding: 0px 50px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+      
+        .b-top{
+            width:80%;
+            height: 60px;
+            border: 5px solid $textBlack;
+            border-bottom: none;
+            border-color: $textBlack;
+        }
+        .lrace-label{
+            position: absolute;
+            background-color: $textBlack;
+            padding: 15px 0px;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            width: 200px;
+            color: white;
+            margin-top: -510px;
+        }
+
+        .b-bottom{
+            width:80%;
+            height: 60px;
+            border: 5px solid $textBlack;
+            border-top: none;
+            border-color: $textBlack;
+        }
+       .stats-list{
+            padding: 20px 0px;
+            width: 70%;
+            display: grid;
+            grid-template-columns: auto auto;
+            padding: 10px 50px;
+            justify-content: space-between;
+
+            .stat-block{
+                text-align: center;
+                width: 100px;
+                padding-bottom: 40px;
+                h4{
+                    font-size: 50px;
+                    font-weight: weight(bold);
+                    margin-bottom: 0px;
+                }
+                p{
+                    margin-bottom: 0px;
+                }
+            }
+      }
+    }
+}
+//selectors
+
+.stats-heading{
+    color: $primaryColor;
+    padding-top: 50px;
+    font-weight: weight(medium);
+}
+select {
+margin-top: 10px;
+  min-width: 130px;
+  appearance: none;
+  border: 2px solid $textBlack;
+  border-radius: 50px;
+  outline: 0;
+  padding: 5px 10px;
+  background-color: transparent;
+  cursor: pointer;
+  background: url('/static/images/chevron-down.svg')
+      no-repeat right 0.8em center / 1.4em;
+  /* Remove focus outline */
+  &:focus {
+    outline: none;
+  }
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+
+//tickets
+.ticket-sec{
+    padding: 25px 0px;
+    .ticket{
+        height: 300px;
+        background-color: $secondaryColor;
+        border-radius: 10px;
+        margin-bottom: 50px;
+        display: flex;
+    
+        .race_name{
+            background-color: $primaryColor;
+            writing-mode: vertical-rl;
+            transform: scale(-1);
+            color: white;
+            text-align: center;
+            padding: 0px 15px;
+            height: 300px;
+            border-radius: 0px 10px 10px 0px;
+        }
+   
+        .event-meta{
+            background-color: #f1f1f1;
+            width: 300px;
+            padding: 25px;
+
+            h6{
+                text-transform: uppercase;
+                color: $primaryColor;
+                font-weight: 600;
+            }
+
+            h6 span{
+                background-color: $lightGrey;
+                border-radius: 20px;
+                padding: 3px 12px;
+                margin-left: 5px;
+            }
+            .circuit-img{
+                padding-top: 20px;
+                width: 180px;
+                height: 180px;
+                margin-right: 0px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+
+            }
+            
+        }
+        .race_stats{
+            width: 600px;
+            padding: 25px;
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+
+            .stat:nth-child(1) {
+                grid-column: span 3;
+            }
+            .stat:nth-child(2), 
+            .stat:nth-child(3),
+            .stat:nth-child(4) {
+                grid-column: span 1;
+            }
+              
+            .stat:nth-child(5) {
+                grid-column: span 3;
+            }
+
+            .label{
+                text-transform: uppercase;
+                color: $darkGrey;
+                padding-bottom: 0px;
+                margin-bottom: 0px;
+                font-size: 15px;
+            }
+            h3{
+                font-size: 20px;
+                font-weight: weight(bold);
+                color: $primaryColor;
+                padding-bottom: 0px;
+                margin-bottom: 0px
+            }
+        }
+
+        .position{
+            padding: 35px 0px;
+            width: 350px;
+            border-left: 1px dashed $primaryColor;
+            text-align: center;
+
+            h4{
+                font-size: 23px;
+                text-transform: uppercase;
+                font-weight: 700;
+                padding-bottom: 0px;
+                line-height: 0;
+                margin-top: 10px;
+                color: $primaryColor;
+            }
+            h1{
+                font-size: 160px;
+                -webkit-text-stroke: 3px $primaryColor;
+                color: $secondaryColor;
+                padding-bottom: 0px;
+                margin-top: -10px;
+                margin-bottom: -10px;
+            }
+            .label{
+                text-transform: uppercase;
+                color: $darkGrey;
+                padding-bottom: 0px;
+                margin-bottom: 0px;
+                font-size: 15px;
+            }
+            h6{
+                font-weight: bold;
+                font-size: 20px;
+                color: $primaryColor;
+            }
+        }
+        
+
+    }
+}
+
+
+.pagination{
+    justify-content: center;
+    
+    
+    &,
+    *{
+      user-select: none;
+    }
+    
+    a{
+      display:inline-block;
+      text-decoration: none;
+      padding:0 10px;
+      cursor:pointer;
+
+      &:hover{
+          color: $primaryColor;
+      }
+      &.disabled{
+        opacity:.3;
+        pointer-events: none;
+        cursor:not-allowed;
+      }
+      &.current{
+        border-radius: 2px;
+        background:$primaryColor;
+        color: white;
+      }
+    }
+}
+
+  /***** ABOUT PAGE *****/
+.about-navbar{
+    .navbar-nav a{
+        color: white;
+
+        &:hover{
+            color: $darkGrey;
+        }
+    }
+}
+
+.about-hero{
+    height: 85vh;
+    background: url('/static/images/crowd_surf.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    h1{
+        position: absolute;
+        bottom: 25px;
+        right: -30px;
+        font-size: 310px;
+        font-weight: weight(bold);
+        color: $primaryColor;
+        opacity: 0.85;
+    }
+    
+    img{
+        position: absolute;
+        z-index: 99;
+        right: 180px;
+        top: 320px;
+        width: 250px;
+    }
+}
+
+.info-bar{
+    height: 15vh;
+    display: flex;
+    // position: relative; whats happending here
+    
+    .black-bio{
+        width: 50%;
+        background-color: $textBlack;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .label{
+            text-transform: uppercase;
+            font-weight: 500;
+            color: $darkGrey;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+            font-size: 13px;
+        }
+        h4{
+            font-size: 30px;
+            font-weight: weight(bold);
+            color: white;
+            padding-bottom: 0px;
+            margin-bottom: 0px
+        }
+    }
+    
+    .grey-bio{
+        width: 50%;
+        background-color: $lightGrey;
+        border-bottom: 0.5px solid $textBlack;
+        color: $textBlack;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .label{
+            text-transform: uppercase;
+            font-weight: 500;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+            font-size: 13px;
+        }
+        h4{
+            font-size: 30px;
+            font-weight: weight(bold);
+            padding-bottom: 0px;
+            margin-bottom: 0px
+        }
+    }
+}
+
+
+#bio, #merc_bio{
+
+    padding: 70px 0px;
+
+    h6{
+        margin-bottom: 0px;
+        font-weight: weight(medium)
+    }
+    h4{
+        font-weight: weight(medium);
+        color: $primaryColor;
+        padding-bottom: 20px;
+    }
+    p{
+        line-height: 25px;
+        column-count: 2;
+        column-gap: 100px;
+    }
+    
+}
+
+#merc_bio{
+
+    #lh-bg{
+        margin-top: -150px;
+        margin-left: -50px;
+        text-transform: uppercase;
+        line-height: 290px;
+        position: absolute;
+        font-size: 300px;
+        font-weight: weight(bold);
+        opacity: .05;
+        z-index: -2;
+    }
+
+    background-color: rgba(28, 28, 28, 0.05);
+    padding: 180px 65px;
+    margin-top: -120px
+}
+
+
+#videos{
+    display: flex;
+    
+    flex-wrap: nowrap;
+    margin: 0px;
+
+    iframe{
+        padding-right: 20px;
+
+    }
+
+ 
+}
+
+.page-title{
+    font-family: $raceFont;
+    margin-top: 150px;
+    position: relative;
+    z-index: 1000;
+    font-size: 60px;
+}
+
+/***** Gallery *****/
+.row {
+    margin: 15px;
+    justify-content: center
+}
+
+.gallery{
+
+
+    .gal-img{
+        width: 400px;
+        height: 450px;
+    
+        img{
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1);
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              transform: scale(1.02);
+              cursor: pointer;
+              box-shadow: 5px 5px 20px $darkGrey;
+            }
+            
+        }
+    }
+
+}
+
+/***** Schedule *****/
+
+.calendar{
+	position: absolute;
+	border-radius: 4px;
+	overflow: hidden;
+	width: 900px;
+	height: 510px;
+    left: 50%;
+	top: 50%;
+    transform: translate(-50%, -50%);  
+	background-color: #ffffff;
+	color: $textBlack;
+
+    h2{
+        font-weight: 300;
+        font-size: 26px;
+        line-height: 28px;
+        text-transform: uppercase;
+        margin: 0px 0px 20px 0px;
+    }
+
+    .col{
+        position: relative;
+        float: left;
+        height: 100%;
+
+        .content{
+            padding: 40px;
+        }
+    }    
+    
+    ul{
+        margin: 0px;
+
+        li{
+            list-style: none;
+        }
+    }
+    
+    .leftCol{
+        width: 40%;
+        background: url('/static/images/lh-fist-up.jpeg') no-repeat center;
+        filter: blur(3px);
+      -webkit-filter: blur(3px);
+    } 
+
+    .rightCol{
+        width: 60%;
+
+        h2{
+            color: #C7BEBE;
+            text-align: right;
+            margin-bottom: 70px;
+        }
+    }
+
+    .months li,
+    .weekday li,
+    .days li{
+        float: left;
+        text-transform: uppercase;
+
+        a{
+        display: block;
+        color: #747978;
+        text-decoration: none;
+        }
+    }
+    
+
+    
+    .months li a{
+        font-size: 10px;
+        color: #C7BEBE;
+        text-align: center;
+        width: 32px;
+        margin-bottom: 20px;
+    }
+    
+    .months li .selected{
+        font-weight: bold;
+        color: #747978;
+    }
+    
+    .weekday li a{
+        width: 55px;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    
+    .days li{
+        width: 55px;
+
+        a{
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            margin: auto auto;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding-top: 10px;
+
+            &:hover{
+                background-color: #EEEDE9;
+            }
+        }
+
+        .selected{
+            background-color: $primaryColor !important;
+            color: #ffffff;
+        }
+
+        .event{
+            color: $primaryColor;
+        }
+    }  
+
+}
+
+
+
+
+
+
+/***** Footer *****/
+footer{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 10px;
+    border-top: 1px solid $textBlack;
+    padding: 20px;
+    margin: 50px auto 0px auto;
+    text-align: center;
+    i{
+        font-size: 22px;
+        color: $textBlack;
+
+        &:hover{
+            color: $primaryColor;
+            cursor: pointer;
+        }
+    }
+    a:hover{
+        color: $primaryColor;
+    }
+}
+
+
+/***** MEDIA QUERIES *****/
+
+@media screen and (max-width: 768px) {
+    body {
+        
+    //   Navbar
+    
+        .navbar{
+            width: 100vw;
+            height: 80px;
+
+            .container-fluid{
+                padding: 0px 20px;
+            }
+
+            .navbar-brand img{
+                height: 30px;
+                padding-right: 0px;
+            }
+
+             
+            button{
+
+                &:focus{
+                    box-shadow: none;
+                }
+                
+                i{
+                    font-size: 30px;
+                    padding: 0;
+                    margin: 0;
+                    border: none;
+                }
+             } 
+
+            .navbar-collapse{
+                //  background-color: white;
+                text-align: right;
+                background:rgba(255, 255, 255, 0.6);
+                backdrop-filter: blur( 2.5px );
+
+                .nav-item, .nav-item:nth-child(5){
+                     padding-right: 20px;
+                }
+
+            }
+
+        }
+
+        .scrolled .navbar-nav a{
+            color: $textBlack;
+        }
+
+        // hero section
+        #hero{
+
+            .l-title, .h-title{
+                position: relative;
+                font-size: 50px;
+                margin:0px auto;
+                color: $kindaBlack;
+                right: 0;
+            }
+            
+            .l-title{
+                margin-top: 90px; 
+                bottom:0;
+            }
+
+            .h-title{
+                bottom: 0;
+            }
+
+            .bg-img{
+                height: 40%;
+            }
+
+
+            .home-stats{
+                width: 80%;
+                position: relative;
+                display: flex;
+                margin-top: 130px;
+                left: 0;
+                justify-content: space-around;
+
+                
+                h4{
+                    font-size: 25px;
+                }
+                p{
+                    font-size: 12px;;
+                }
+            }
+
+
+            .race-stats{
+                position: relative;
+                width: 80%;
+                margin-top: -120px;
+                right: 0 ;
+            }
+        }
+
+        #stats-hero{
+            flex-direction: column;
+            
+            .img-bg{
+                width: 100%;
+                height: 50vh;
+
+                img{
+                    position: relative;
+                    width: 120px;
+                    margin-top: 280px;
+    
+                }
+            }
+            
+            .circuit-bg{
+                width: 500px;
+                height: 500px;
+                margin-top: 380px;
+                right: 0;
+            }
+
+            .stats-container{
+                margin-top: 90px;
+                padding: 0px;   
+                width: 100%;   
+                
+                .lrace-label{
+                    font-size: 12px;
+                    padding: 10px 0px;
+                    margin-top: -315px;
+                    width: 150px;
+                }
+
+                .b-top, .b-bottom{
+                    height: 30px;
+                }
+                .stats-list{
+                    padding: 0;
+
+                    .stat-block{
+                        text-align: center;
+                        width: 100px;
+                        padding-bottom: 20px;
+                        h4{
+                            font-size: 35px;
+                            font-weight: weight(bold);
+                            margin-bottom: 0px;
+                        }
+                        p{
+                            margin-bottom: 0px;
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        .stats-heading{
+            padding-left: 15px;
+        }
+
+        select{
+            margin-left: 15px;
+            font-size: 15px;
+            padding: 5px 8px;
+        }
+
+
+        .ticket-sec{
+
+            .ticket{
+                margin: 0 auto;
+                flex-direction: column;
+                width: 80%;
+                height: auto;
+                margin-bottom: 50px;
+
+                .race_name{
+                    position: relative;
+                    height: auto;
+                    writing-mode: horizontal-tb;
+                    transform: scale(1);
+                    border-radius: 10px 10px 0px 0px;
+                    padding: 15px 0;
+
+                    h6{
+                        margin-bottom: 0;
+                    }
+                }
+
+                .event-meta{
+                    width: 100%;
+
+                    .circuit-img{
+                        width: 200px;
+                        height: 200px;
+                        margin: 0;
+                        padding-top:10px;
+                    }
+                    img{
+                        width: 100%;
+                    }
+                }
+
+                .race_stats{
+                    width: 100%;
+                    grid-template-rows: repeat(3, 1fr);
+                    grid-template-columns: repeat(2, 1fr);
+        
+                    .stat:nth-child(1) {
+                        grid-column: span 2;
+                    }
+                    .stat:nth-child(2), 
+                    .stat:nth-child(3){
+                        grid-column: span 1;
+                    }
+                      
+                    .stat:nth-child(4),
+                     .stat:nth-child(5) {
+                        grid-column: span 1;
+                    }
+                }
+
+
+                .position{
+                    width: 100%;
+                    border-left: none;
+                    border-top: 1px dashed $primaryColor;
+                }
+
+            }
+           
+        }
+
+        .pagination{   
+            display: flex;
+            width: 90%;
+            flex-wrap: wrap;
+        }
+
+        .about-hero{
+            height: 45vh;
+            background-position: center;
+
+            h1{
+                position: relative;
+                bottom: 0;
+                right:0;
+                font-size: 85px;
+                top: 220px;
+                text-align: center;
+            }
+
+            img{
+                position: absolute;
+                z-index: 99;
+                right: 20px;
+                top: 170px;
+                width: 120px;
+            }
+            
+        }
+
+        .info-bar{
+            flex-direction: column;
+            height: 25vh;
+
+            .black-bio, .grey-bio{
+                width: 100%;
+                height: 200px;
+
+                h4{
+                    font-size: 20px;
+                }
+            }
+
+        }
+
+        #bio{
+            padding: 40px 15px;
+
+            h4{
+                font-size: 30px;
+                padding-bottom: 10px;
+            }
+            p{
+                line-height: 25px;
+                column-count: 1;
+                text-align: left;
+            }
+        }
+
+        #videos{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0px;
+        
+            iframe{
+                padding-right: 0px;
+                padding-bottom: 20px;
+                height: 220px;
+            }
+        }
+
+        #merc_bio{
+            padding: 240px 30px 50px 30px;
+            h4{
+                font-size: 30px;
+                padding-bottom: 10px;
+            }
+            p{
+                line-height: 25px;
+                column-count: 1;
+                text-align: left;
+            }
+            margin-top: -200px;
+
+            #lh-bg{
+                margin-top: 100px;
+                margin-left: 0px;
+
+                line-height: 110px;
+                font-size: 120px;
+                overflow-x: hidden;
+                
+            }
+        }
+
+        .page-title{
+            margin-left: -30px;
+            margin-top: 120px;
+            font-size: 50px;
+        }
+
+        .row {
+            margin: 10px;
+        }
+
+        .gal-img{
+            margin-bottom: 20px;
+            img{
+                height: 100%;
+                object-fit: cover;
+                transform: scale(1);
+                transition: all 0.3s ease-in-out;
+                &:hover {
+                  transform: scale(1.02);
+                  cursor: pointer;
+                  box-shadow: 5px 5px 20px $darkGrey;
+                }
+                
+            }
+        }
+
+
+        .calendar{
+            width: 90%;
+            display: block;
+            top: 210px;
+            position: relative;
+            margin-bottom: 120px;
+
+            .col{
+                float: none;
+            }
+            .leftCol{
+                width: 100%;
+                height: 30%;
+            } 
+        
+            .rightCol{
+                width: 100%;
+                height:auto;
+                padding-bottom: 30px;
+                .content{
+                    padding: 10px;
+
+                    .year{
+                        margin-right: 20px;
+                        margin-bottom: 15px;
+                    }
+
+                    .months{
+                        padding-left: 0px;
+                        padding-bottom: 20px;
+                        li a{
+                            margin-bottom: 5px;
+                        }
+                    }
+
+                    .weekday{
+                        margin-top: 10px;
+                        padding-left: 0px;
+
+                        li a{
+                            width: 40px;
+                        }
+                    }
+
+                    .days{
+                        padding-left: 0;
+
+                        li{
+                            width: 40px;
+                        }
+                    }
+                }
+            }
+        
+        }
+
+        footer{
+            flex-direction: column;
+            bottom: 0;
+        }
+    }
+
+
+}
+

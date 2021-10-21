@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="static/images/logo-wings.png" width="100px" height="100px" >
+    <!-- Boxicon -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{url_for('static', filename='scss/main.css')}}">
+    <title>LH44</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('index') }}"><img src="{{url_for('static', filename='/images/logo-wings.png')}}" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <i class='bx bx-menu-alt-right'></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('stats') }}">Stats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('schedule') }}">Schedule</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+      <div class="container">
+        <h1 class="page-title">schedule</h1>
+        <div class="calendar">
+          <div class="col leftCol">
+        
+          </div>
+          <div class="col rightCol">
+            <div class="content">
+              <h2 class="year">2021</h2>
+              <ul class="months">
+                <li><a href="#" title="Jan" data-value="1">Jan</a></li>
+                <li><a href="#" title="Feb" data-value="2">Feb</a></li>
+                <li><a href="#" title="Mar" data-value="3">Mar</a></li>
+                <li><a href="#" title="Apr" data-value="4">Apr</a></li>
+                <li><a href="#" title="May" data-value="5">May</a></li>
+                <li><a href="#" title="Jun" data-value="6">Jun</a></li>
+                <li><a href="#" title="Jul" data-value="7">Jul</a></li>
+                <li><a href="#" title="Aug" data-value="8">Aug</a></li>
+                <li><a href="#" title="Sep" data-value="9">Sep</a></li>
+                <li><a href="#" title="Oct" data-value="10" class="selected">Oct</a></li>
+                <li><a href="#" title="Nov" data-value="11">Nov</a></li>
+                <li><a href="#" title="Dec" data-value="12">Dec</a></li>
+              </ul>
+              <div class="clearfix"></div>
+              <ul class="weekday">
+                <li><a href="#" title="Mon" data-value="1">Mon</a></li>
+                <li><a href="#" title="Tue" data-value="2">Tue</a></li>
+                <li><a href="#" title="Wed" data-value="3">Wed</a></li>
+                <li><a href="#" title="Thu" data-value="4">Thu</a></li>
+                <li><a href="#" title="Fri" data-value="5">Fri</a></li>
+                <li><a href="#" title="Say" data-value="6">Sat</a></li>
+                <li><a href="#" title="Sun" data-value="7">Sun</a></li>
+              </ul>
+              <div class="clearfix"></div>
+              <ul class="days">
+                <script>
+                  for( var _i = 1; _i <= 31; _i += 1 ){
+                    var _addClass = '';
+                    if( _i === 19 ){ _addClass = ' class="selected"'; }
+        
+                    switch( _i ){
+                      case 6:
+                      case 7:
+                      case 20:
+                      case 21:
+                        _addClass = ' class="event"';
+                      break;
+                    }
+                    document.write( '<li><a href="#" title="'+_i+'" data-value="'+_i+'"'+_addClass+'>'+_i+'</a></li>' );
+                  }
+                </script>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <footer style=" position: absolute; bottom: 0;">
+          <div>&copy; 2021 Copyright | <a href="https://lewishamilton.com/">lewishamilton.com</a></div>
+          <div class="socials">
+              <a href="https://www.facebook.com/LewisHamilton"><i class='bx bxl-facebook'></i></a>
+              <a href="https://twitter.com/LewisHamilton"><i class='bx bxl-twitter'></i></a>
+              <a href="https://www.instagram.com/lewishamilton/"><i class='bx bxl-instagram-alt'></i></a>
+          </div>
+        </footer>
+      </div>
+</body>
+</html>

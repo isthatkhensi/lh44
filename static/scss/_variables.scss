@@ -1,0 +1,36 @@
+// Additional Font
+@font-face {
+  font-family: 'paladinsregular';
+  src: url('../fonts/paladins-webfont.woff') format('woff2'),
+       url('../fonts/paladins-webfont.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+// Color Pallette
+$primaryColor: #4C388B;
+$secondaryColor: #E1DFE7;
+$textBlack: #1c1c1c;
+$kindaBlack: #141414;
+$darkGrey: #9b9b9b;
+$lightGrey: #e6e6e6;
+
+// Fonts
+$raceFont: 'paladinsregular', serif;
+
+$mainFont: 'Montserrat', sans-serif;
+
+
+//Font Weight 
+$font-weights: (
+  "thin" : 300,
+  "regular": 400,
+  "medium": 600,
+  "bold": 800,
+);
+
+//Font Weight Function
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}

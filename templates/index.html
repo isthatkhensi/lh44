@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="static/images/logo-wings.png" width="100px" height="100px" >
+    <!-- Boxicon -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{url_for('static', filename='scss/main.css')}}">
+    <title>LH44</title>
+</head>
+<body>
+    <div id="hero">
+          <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{{ url_for('index') }}"><img src="{{url_for('static', filename='/images/logo-wings.png')}}" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <i class='bx bx-menu-alt-right'></i>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('stats') }}">Stats</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('schedule') }}">Schedule</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        <h1 class="l-title">Lewis</h1>
+        <img class="bg-img" src="static/images/lh-wave.png" alt="">
+        <h1 class="h-title">Hamilton</h1>
+        <div class="home-stats">
+          <div>
+            <div class="counter">
+              <h4 class="timer count-title count-number" data-to="{{ wins['total'] }}" data-speed="1500"></h4>
+            </div>
+            <p>Wins</p>
+          </div>
+          <div>
+            <div class="counter">
+              <h4 class="timer count-title count-number" data-to="{{ points }}" data-speed="1500"></h4>
+            </div>
+            <p>Points</p>
+          </div>
+          <div>
+            <div class="counter">
+              <h4 class="timer count-title count-number" data-to="{{ data['total'] }}" data-speed="1500"></h4>
+            </div>
+            <p>Grand Prixs</p>
+          </div>
+        </div>
+        <div class="race-stats">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="lrace-tab" data-bs-toggle="tab" data-bs-target="#lrace" type="button" role="tab" aria-controls="lrace" aria-selected="true">Last Race</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="nrace-tab" data-bs-toggle="tab" data-bs-target="#nrace" type="button" role="tab" aria-controls="nrace" aria-selected="false">Next Race</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="lrace" role="tabpanel" aria-labelledby="lrace-tab">
+              <div class="race-results__container">
+                {% for race in lastRace %}
+                {% set circuitId = race['Circuit']['circuitId'] %}
+                {% set countryName = race['Circuit']['Location']['country'] %}
+                  <div class="info-left">
+                    <div class="title">
+                      <h5 class="country">{{ race['Circuit']['Location']['country'] }}</h5>
+                      <div class="c-flag"><img class="flag" src="{{ url_for('static', filename='images/country-flags/' + countryName + '.png') }}" alt=""></div>
+                      <i class='bx bx-chevron-right'></i>
+                    </div>
+                    <div class="meta-data">
+                      <p class="date">{{ lastRaceDate }}</p>
+                      <p class="circuit-name">{{ race['Circuit']['circuitName'] }}</p>
+                    </div>
+                    {% for dates in races %}
+                    {% if dates['date'] == race['date'] %}
+                      {% for position in dates['Results']%}
+                      <ul class="race-results">
+                        <li>Qualifying - <span class="result"> Position {{ position['grid']}}</span></li>
+                        <li>Race - <span class="result"> Position {{ position['position']}}</span></li>
+                      </ul> 
+                      {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="circuit-right">
+                    <img src="{{ url_for('static', filename='images/circuit-maps/' + circuitId + '.svg') }}" alt="">
+                  </div>
+                {% endfor%}
+                </div>
+              </div>
+            <div class="tab-pane fade" id="nrace" role="tabpanel" aria-labelledby="nrace-tab">
+              <div class="race-results__container">
+                {% for race in nextRace %}
+                  {% set circuitId = race['Circuit']['circuitId'] %}
+                  {% set countryName = race['Circuit']['Location']['country'] %}
+                    <div class="info-left">
+                      <div class="title">
+                        <h5 class="country">{{ race['Circuit']['Location']['country'] }}</h5>
+                        <div class="c-flag"><img class="flag" src="{{ url_for('static', filename='images/country-flags/' + countryName + '.png') }}" alt=""></div>
+                        <i class='bx bx-chevron-right'></i>
+                      </div>
+                      <div class="meta-data">
+                        <p class="date">{{ nextRaceDate }}</p>
+                        <p class="circuit-name">{{ race['Circuit']['circuitName'] }}</p>
+                      </div>
+                      <div id="timer"></div>
+                    </div>
+                    <div class="circuit-right">
+                      <img src="{{ url_for('static', filename='images/circuit-maps/' + circuitId + '.svg') }}" alt="">
+                    </div>
+                  {% endfor%}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="{{url_for('static', filename='scripts/main-script.js')}}"></script>
+</body>
+</html>

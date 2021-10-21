@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="static/images/logo-wings.png" width="100px" height="100px" >
+    <!-- Boxicon -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{url_for('static', filename='scss/main.css')}}">
+    <title>LH44</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('index') }}"><img src="{{url_for('static', filename='/images/logo-wings.png')}}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class='bx bx-menu-alt-right'></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('stats') }}">Stats</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('about') }}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('schedule') }}">Schedule</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div id="stats-hero">
+          <div class="img-bg">
+            <img src="{{url_for('static', filename='/images/44.png')}}" alt="">
+          </div>
+          <div class="circuit-bg"></div>
+          <div class="stats-container">
+            <div class="b-top"></div>  
+            <div class="lrace-label">Last Race</div>
+            <div class="stats-list">
+                {% for race in lastRace %}
+                {% set circuitId = race['Circuit']['circuitId'] %}
+                {% set countryName = race['Circuit']['Location']['country'] %}
+                    {% for dates in races %}
+                        {% if dates['date'] == race['date'] %}
+                        {% for info in dates['Results']%}
+                            <div class="stat-block">
+                                <h4>{{ info['points'] }}</h4>
+                                <p>Points</p>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor%}
+                {% for race in lastRace %}
+                {% set circuitId = race['Circuit']['circuitId'] %}
+                {% set countryName = race['Circuit']['Location']['country'] %}
+                    {% for dates in races %}
+                        {% if dates['date'] == race['date'] %}
+                        {% for info in dates['Results']%}
+                            <div class="stat-block">
+                                <h4>{{ info['grid'] }}</h4>
+                                <p>Grid</p>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor%}
+                {% for race in lastRace %}
+                {% set circuitId = race['Circuit']['circuitId'] %}
+                {% set countryName = race['Circuit']['Location']['country'] %}
+                    {% for dates in races %}
+                        {% if dates['date'] == race['date'] %}
+                        {% for info in dates['Results']%}
+                            <div class="stat-block">
+                                <h4>{{ info['position'] }}</h4>
+                                <p>Position</p>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor%}
+                {% for race in lastRace %}
+                {% set circuitId = race['Circuit']['circuitId'] %}
+                {% set countryName = race['Circuit']['Location']['country'] %}
+                    {% for dates in races %}
+                        {% if dates['date'] == race['date'] %}
+                        {% for info in dates['Results']%}
+                            <div class="stat-block">
+                                <h4>{{ info['laps'] }}</h4>
+                                <p>Laps</p>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor%}
+                {% for race in lastRace %}
+                {% set circuitId = race['Circuit']['circuitId'] %}
+                {% set countryName = race['Circuit']['Location']['country'] %}
+                    {% for dates in races %}
+                        {% if dates['date'] == race['date'] %}
+                        {% for info in dates['Results']%}
+                            <div class="stat-block">
+                                <h4 id="pitstops"></h4>
+                                <p>Pitstops</p>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor%}
+                
+                            <div class="stat-block">
+                                {% for data in standings %}
+                                    {% for first in data['DriverStandings']%}
+                                    {% if first['Driver']['driverId'] == 'hamilton' %}
+                                        <h4>{{ first['position']}}</h4>
+                                    {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                                <p>Standings</p>
+                            </div>
+            </div>
+            <div class="b-bottom"></div>
+          </div>
+      </div>
+      <div class="container">
+        <h4 class="stats-heading">Statistics</h4>
+        <select id="season">
+            <option value="All">Season</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+          </select>
+
+        <select id="circuit"> 
+            <option value="all" default>Circuit</option>
+            {% for circuit in circuits %}
+                <option  value="{{ circuit['circuitName'] }}">{{ circuit['circuitName'] }}</option>
+                {% set circuitNames = circuits %}
+            {% endfor %}
+          </select>
+          
+          <section>
+              <div class="ticket-sec">
+                  {% for race in races %}
+                  {% set circuitId = race['Circuit']['circuitId'] %}
+                    <div class="ticket">
+                        <div class="race_name">
+                            <h6>{{race['raceName']}}</h6>
+                        </div>
+                        
+                        <div class="event-meta">
+                            <h6>Round {{race['round']}} <span>{{race['season']}}</span></h6>
+                            <h6>{{race['date']}}</h6>
+                            <h6>{{race['Circuit']['Location']['country']}}</h6>
+                            <div class="circuit-img">
+                                <img src="{{ url_for('static', filename='images/circuit-maps/' + circuitId + '.svg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="race_stats">
+
+                           <div class="stat">
+                               <p class="label">Circuit</p>
+                               <h3>{{race['Circuit']['circuitName']}}</h3>
+                           </div>
+                           
+                           {% for result in race['Results'] %}
+                           <div class="stat">
+                               <p class="label">Grid</p>
+                               <h3>{{result['grid']}}</h3>
+                           </div>
+                           <div class="stat">
+                                <p class="label">Laps</p>
+                                <h3>{{result['laps']}}</h3>
+                            </div>
+                           <div class="stat">
+                               <p class="label">Status</p>
+                               <h3>{{result['status']}}</h3>
+                           </div>
+                           <div class="stat">
+                               <p class="label">Constructor</p>
+                               <h3>{{result['Constructor']['name']}}</h3>
+                           </div>
+                           
+                           {% endfor %}
+
+                        </div>
+                        <div class="position">
+                            {% for result in race['Results'] %}
+                                <h4>Position</h4>
+                                <h1>{{result['position']}}</h1> 
+                                <p class="label">Points</p>
+                                <h6>{{result['points']}}</h6>
+                            {% endfor %}
+                        </div>
+                    </div>
+                  {% endfor %}
+              </div>
+          </section>
+      </div>
+      <script src="{{url_for('static', filename='scripts/stats-script.js')}}"></script>
+
+      <footer>
+        <div>&copy; 2021 Copyright | <a href="https://lewishamilton.com/">lewishamilton.com</a></div>
+        <div class="socials">
+            <a href="https://www.facebook.com/LewisHamilton"><i class='bx bxl-facebook'></i></a>
+            <a href="https://twitter.com/LewisHamilton"><i class='bx bxl-twitter'></i></a>
+            <a href="https://www.instagram.com/lewishamilton/"><i class='bx bxl-instagram-alt'></i></a>
+        </div>
+      </footer>
+</body>
+</html>
